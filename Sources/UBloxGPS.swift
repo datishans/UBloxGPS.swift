@@ -128,8 +128,8 @@ public class UBloxGPS{
          case "$GPRMC":
             // time,valid,lat,NorS,lon,EorW,speed,course,date,magn,EorW,ck
             // time= hhmmss.ss, date= ddmmyy
-            if comp[1].characters.count > 0 { 
-               datetime = comp[9]+" "+String(comp[1].characters.dropLast(3))
+            if comp[1].count > 0 {
+               datetime = comp[9]+" "+String(comp[1].dropLast(3))
             }
 
             isDataValid = (comp[2] == "A")
@@ -138,13 +138,13 @@ public class UBloxGPS{
             EW = (comp[6] == "E") ? 1 : -1
 
             // latitude and longitude in degrees+minutes format
-            if (comp[3].characters.count > 0) && (comp[5].characters.count > 0) { 
-               latitude = Double(String(comp[3].characters.prefix(2)))! + 
-                           Double(String(comp[3].characters.dropFirst(2)))!/60
+            if (comp[3].count > 0) && (comp[5].count > 0) {
+               latitude = Double(String(comp[3].prefix(2)))! +
+                           Double(String(comp[3].dropFirst(2)))!/60
                latitude *= Double(NS)
                latitude = latitude.roundTo(places: 8)
-               longitude = Double(String(comp[5].characters.prefix(3)))! + 
-                            Double(String(comp[5].characters.dropFirst(3)))!/60
+               longitude = Double(String(comp[5].prefix(3)))! +
+                            Double(String(comp[5].dropFirst(3)))!/60
                longitude *= Double(EW)
                longitude = longitude.roundTo(places: 8)
             }

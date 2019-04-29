@@ -11,11 +11,14 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/uraimo/SwiftyGPIO.git",
-                 from: "1.1.2")
+                 from: "1.0.0")
     ],
     targets: [
         .target(
             name: "UBloxGPS",
+            dependencies: [
+                "SwiftyGPIO",
+            ],
             path: "Sources"),
     ]
 )

@@ -40,6 +40,9 @@ public class UBloxGPS{
    public var latitude: Double = 0
    /// Longitude in degrees
    public var longitude: Double = 0
+    
+   public var speedKmph:Double = 0
+    
    /// Number of active satellites (visible and actually being received)
    public var satellitesActiveNum = 0
    /// Number of satellites visible
@@ -98,6 +101,7 @@ public class UBloxGPS{
       print("GPS Values are",(isDataValid ? "valid." : "invalid."))
       print("Date:", datetime)
       print("Latitude:",latitude,"Longitude:",longitude)
+      print("Speed:",speedKmph," km/h")
       print("Altitude:",altitude,altitudeUnit)
       print("Visible satellites:",satellitesNum)
       print("Usable satellites:",satellitesActiveNum)
@@ -147,6 +151,11 @@ public class UBloxGPS{
                             Double(String(comp[5].dropFirst(3)))!/60
                longitude *= Double(EW)
                longitude = longitude.roundTo(places: 8)
+                
+                speedKmph = 0
+                if let knots = Double(comp[7]) {
+                    speedKmph = knots * 1.852
+                }
             }
          case "$GPGGA":
             // time,lat,NorS,lon,EorW,quality,numSats,Hdiluition,altitude,unitAltitude,geoidsep,unitGeoidsep,dataAge,[missing in ublox],ck

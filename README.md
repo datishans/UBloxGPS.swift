@@ -1,13 +1,23 @@
 # UBloxGPS.swift
 
 
-```
-This fork: 
+
+## This fork because:
 
 - make it work w/ swift 5 on rpi
 
 - adds speed km/h
-```
+
+## Installation
+
+Add to your Package.swift:
+
+1) .package(url: "https://github.com/datishans/UBloxGPS.swift.git", .branch("master")),
+
+2) dependencies: [ "UBloxGPS" ]
+
+
+----
 
 *A Swift library for boards with the u-Blox 6/7/8 family of A-GPS receivers with an UART serial connection.*
 

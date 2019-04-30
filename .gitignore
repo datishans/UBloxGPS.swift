@@ -99,3 +99,4 @@ fastlane/test_output
 # Carthage - A simple, decentralized dependency manager for Cocoa
 Carthage/Checkouts/
 Carthage/Build/
+Package.resolved

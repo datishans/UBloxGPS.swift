@@ -1,6 +1,13 @@
 # UBloxGPS.swift
 
-*This fork: make it work w/ swift 5*
+
+```
+This fork: 
+
+- make it work w/ swift 5
+
+- adds speed km/h
+```
 
 *A Swift library for boards with the u-Blox 6/7/8 family of A-GPS receivers with an UART serial connection.*
 

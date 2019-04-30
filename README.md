@@ -4,7 +4,7 @@
 ```
 This fork: 
 
-- make it work w/ swift 5
+- make it work w/ swift 5 on rpi
 
 - adds speed km/h
 ```

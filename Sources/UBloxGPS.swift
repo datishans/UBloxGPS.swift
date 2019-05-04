@@ -113,10 +113,25 @@ public class UBloxGPS{
    }
 
    private func update(){
-      while running {
-         let s = uart.readLine()
-         parseNMEA(s)
-      }
+        while running {
+            let lines = uart.readString().components(separatedBy: "\r\n")
+            
+            lines.forEach { (text) in
+                var isOKLine = false
+                
+                // some basic sanity checking on every line "$......*.."
+                if text.count >= 8 && text.first == "$" {
+                    let checksum = String(text.trimmingCharacters(in: .whitespacesAndNewlines).suffix(3))
+                    if let star = checksum.first, star == "*" {
+                        isOKLine = true
+                    }
+                }
+                
+                if isOKLine {
+                    parseNMEA(text)
+                }
+            }
+        }
    }
 
    /// Parse the NMEA0183 protocol strings that follow the format:
